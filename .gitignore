@@ -1,0 +1,23 @@
+  # Visual Studio cache/options
+  .vs/
+  .vscode/
+
+  # Build output
+  bin/
+  obj/
+  *.user
+  *.suo
+  *.sln.iml
+
+  # NuGet
+  packages/
+  *.nupkg
+
+  # IDE
+  .idea/
+  *.swp
+  *.swo
+
+  # OS
+  .DS_Store
+  Thumbs.db

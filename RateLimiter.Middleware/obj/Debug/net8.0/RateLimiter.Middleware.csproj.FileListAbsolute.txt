@@ -1,0 +1,15 @@
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\bin\Debug\net8.0\RateLimiter.Middleware.deps.json
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\bin\Debug\net8.0\RateLimiter.Middleware.dll
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\bin\Debug\net8.0\RateLimiter.Middleware.pdb
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\bin\Debug\net8.0\RateLimiter.Core.dll
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\bin\Debug\net8.0\RateLimiter.Core.pdb
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\RateLimiter.Middleware.csproj.AssemblyReference.cache
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\RateLimiter.Middleware.GeneratedMSBuildEditorConfig.editorconfig
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\RateLimiter.Middleware.AssemblyInfoInputs.cache
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\RateLimiter.Middleware.AssemblyInfo.cs
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\RateLimiter.Middleware.csproj.CoreCompileInputs.cache
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\RateLimiter.Middleware.csproj.CopyComplete
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\RateLimiter.Middleware.dll
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\refint\RateLimiter.Middleware.dll
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\RateLimiter.Middleware.pdb
+D:\PrepProjects\ApiRateLimiter\RateLimiter.Middleware\obj\Debug\net8.0\ref\RateLimiter.Middleware.dll
