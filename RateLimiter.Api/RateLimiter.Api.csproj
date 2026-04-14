@@ -8,11 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.12.14" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\RateLimiter.Core\RateLimiter.Core.csproj" />
+    <ProjectReference Include="..\RateLimiter.Middleware\RateLimiter.Middleware.csproj" />
+    <ProjectReference Include="..\RateLimiter.Redis\RateLimiter.Redis.csproj" />
   </ItemGroup>
 
 </Project>
