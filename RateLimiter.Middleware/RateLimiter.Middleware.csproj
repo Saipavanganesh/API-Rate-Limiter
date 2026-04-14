@@ -9,5 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\RateLimiter.Core\RateLimiter.Core.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
 
 </Project>

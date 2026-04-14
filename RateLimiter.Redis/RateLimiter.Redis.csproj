@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="sliding-window.lua" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="sliding-window.lua" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.12.14" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RateLimiter.Core\RateLimiter.Core.csproj" />
   </ItemGroup>
 
