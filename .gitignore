@@ -21,3 +21,20 @@
   # OS
   .DS_Store
   Thumbs.db
+/RateLimiter.Api/bin/Debug/net8.0
+/RateLimiter.Api/obj/Debug/net8.0
+/RateLimiter.Api/obj/Debug/net8.0/ref/RateLimiter.Api.dll
+/RateLimiter.Core/.vs
+/RateLimiter.Core/bin/Debug/net8.0
+/RateLimiter.Core/obj/Debug/net8.0
+/RateLimiter.Middleware/bin/Debug/net8.0
+/RateLimiter.Middleware/obj/Debug/net8.0
+/RateLimiter.Redis/bin/Debug/net8.0
+/RateLimiter.Redis/obj/Debug/net8.0
+/RateLimiter.Tests/bin/Debug/net8.0
+/RateLimiter.Tests/obj/Debug/net8.0
+/RateLimiter.Tests/obj
+/RateLimiter.Redis/obj
+/RateLimiter.Middleware/obj
+/RateLimiter.Core/obj
+/RateLimiter.Api/obj
