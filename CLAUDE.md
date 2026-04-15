@@ -1,8 +1,8 @@
 # API Rate Limiter — Project Instructions
 
 **Scope:** Interview prep project for Senior Developer role (16-20 LPA)
-**Last Updated:** 2026-04-12
-**Status:** PHASE 1 & 2 COMPLETE | PHASE 3 Next
+**Last Updated:** 2026-04-15
+**Status:** ALL PHASES COMPLETE
 
 > Full architecture rationale → `ARCHITECTURE_DECISIONS.md`
 > Interview Q&A → `INTERVIEW_PREP.md`
@@ -11,18 +11,16 @@
 
 ## Current Progress
 
-### Done
+### All Phases Complete
 - **PHASE 1 — Core:** Interfaces, Models, Enums, SlidingWindowCalculator algorithm. Zero external dependencies.
 - **PHASE 2 — Unit Tests:** 5 passing tests with [Theory]+[InlineData], AAA pattern. No Redis needed.
+- **PHASE 3 — Redis:** sliding-window.lua (atomic Lua), RedisRateLimiter, InMemoryRateLimiter fallback.
+- **PHASE 4 — Middleware:** RateLimitMiddleware, ServiceCollectionExtensions, three strategy resolvers (IP/User/ApiKey).
+- **PHASE 5 — API Wiring:** Program.cs DI, appsettings config, TestController. Live 429 verified.
+- **PHASE 6 — Integration Tests:** TestContainers, 3 tests (200 within limit, 429 exceeded, Retry-After header).
+- **Docker:** Dockerfile + docker-compose.yml — `docker-compose up --build` spins everything up.
+- **README:** Architecture, algorithm, design decisions, how to run.
 - **GitHub:** Pushed to https://github.com/Saipavanganesh/API-Rate-Limiter.git (main branch)
-
-### Up Next — PHASE 3: Redis Implementation
-1. Add StackExchange.Redis NuGet to RateLimiter.Redis
-2. Create `sliding-window.lua` (atomic read + check + increment)
-3. Build `RedisRateLimiter` implementing `IRateLimiter`
-4. Build `InMemoryRateLimiter` (graceful degradation fallback)
-5. Wire up strategy resolvers (extract IP / user ID / API key)
-6. Integration tests with TestContainers
 
 ---
 
@@ -56,7 +54,7 @@ Example: prevCount=95, elapsed=30s, window=60s, currentCount=1
 
 ```
 RateLimiter.Core (zero dependencies)
-  Interfaces/IRateLimiter.cs, IStrategyKeyResolver.cs
+  Interfaces/IRateLimiter.cs
   Models/RateLimitConfig.cs, RateLimitResult.cs, RateLimitExceeded.cs
   Enums/RateLimitStrategy.cs, RateLimitStatus.cs
   Algorithms/SlidingWindowCalculator.cs
@@ -70,14 +68,18 @@ RateLimiter.Redis (→ Core)
 RateLimiter.Middleware (→ Core)
   RateLimitMiddleware.cs
   ServiceCollectionExtensions.cs
+  IStrategyKeyResolver.cs
+  Resolvers.cs (IpKeyResolver, UserKeyResolver, ApiKeyResolver)
 
 RateLimiter.Api (→ Core, Redis, Middleware)
-  Program.cs, appsettings.json, appsettings.Development.json, appsettings.Production.json
-  Controllers/TestController.cs
+  Program.cs, appsettings.json, Dockerfile
+  Controllers/RateLimitTestController.cs
 
-RateLimiter.Tests
+RateLimiter.Tests (→ Core, Api)
   Unit/SlidingWindowCalculatorTests.cs         ← no Redis
   Integration/RateLimitIntegrationTests.cs     ← TestContainers
+
+docker-compose.yml                             ← solution root
 ```
 
 ---

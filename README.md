@@ -36,8 +36,8 @@ estimated_count = (prev_count × (1 - elapsed / window_size)) + current_count
 **Example:** window=60s, elapsed=30s, prev_count=95, current request=1
 ```
 95 × (1 - 30/60) = 95 × 0.5 = 47.5
-47.5 + 1 = 48.5 → 48
-limit=100 → ALLOWED, remaining=52
+47.5 + 1 = 48.5 → ceiling → 49
+limit=100 → ALLOWED, remaining=51
 ```
 
 **Why sliding window over alternatives:**
@@ -61,7 +61,7 @@ Same algorithm — only the Redis key changes:
 |----------|-----------|--------|
 | `PerIp` | `rate_limit:ip:{ip}` | `RemoteIpAddress` |
 | `PerUser` | `rate_limit:user:{userId}` | JWT `sub` claim |
-| `PerApiKey` | `rate_limit:apikey:{key}` | `X-Api-Key` header |
+| `PerApiKey` | `rate_limit:apiKey:{key}` | `X-Api-Key` header |
 
 Configure in `appsettings.json` — no code change needed.
 
@@ -74,7 +74,7 @@ Configure in `appsettings.json` — no code change needed.
 | Build order | Core → Redis → Middleware → Api | Test algorithm before touching infrastructure |
 | Async/Sync | Async from start | Redis I/O requires it — can't retrofit cleanly |
 | Core design | Pure function — takes prevCount as param | Zero dependencies, fully testable in isolation |
-| Lua location | Separate `sliding-window.lua` file | Syntax highlighting, SHA caching, clear separation |
+| Lua location | Separate `sliding-window.lua` file | Syntax highlighting, version control history, clear separation |
 | Redis failure | Graceful degradation → in-memory fallback | Availability > Accuracy — API stays up |
 | Config | `appsettings.json` per environment | Per-environment limits without recompilation |
 
