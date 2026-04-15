@@ -1,3 +1,4 @@
+using RateLimiter.Core.Enums;
 using RateLimiter.Core.Models;
 using RateLimiter.Middleware;
 using RateLimiter.Redis.Configuration;
@@ -9,7 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 var rateLimitConfig = new RateLimitConfig
 {
    RequestsPerWindow = builder.Configuration.GetValue<int>("RateLimiting:RequestsPerWindow"),
-   WindowSizeSeconds = builder.Configuration.GetValue<int>("RateLimiting:WindowSizeSeconds")
+   WindowSizeSeconds = builder.Configuration.GetValue<int>("RateLimiting:WindowSizeSeconds"),
+   Strategy = builder.Configuration.GetValue<RateLimitStrategy>("RateLimiting:Strategy")
+
 };  
 var redisOptions = new RedisOptions
 {

@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis-ratelimiter
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: .
+      dockerfile: RateLimiter.Api/Dockerfile
+    container_name: ratelimiter-api
+    ports:
+      - "5000:8080"
+    environment:
+      - RateLimiting__RequestsPerWindow=10
+      - RateLimiting__WindowSizeSeconds=60
+      - RateLimiting__Strategy=PerIp
+      - RateLimiting__Redis__ConnectionString=redis:6379
+    depends_on:
+      - redis

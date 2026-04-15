@@ -17,24 +17,25 @@ public class RateLimitMiddleware
     private readonly RequestDelegate _next;
     private readonly IRateLimiter _rateLimiter;
     private readonly RateLimitConfig _config;
-
+    private readonly IStrategyKeyResolver _resolver;
     //  The Middleware Contract in ASP.NET
 
-  //  Two strict rules ASP.NET requires:
+    //  Two strict rules ASP.NET requires:
 
-  //1. Constructor must take RequestDelegate next as the first parameter
-  //  2. Must have a method named InvokeAsync that takes HttpContext as the first parameter
+    //1. Constructor must take RequestDelegate next as the first parameter
+    //  2. Must have a method named InvokeAsync that takes HttpContext as the first parameter
 
-  //  That's it. Those two things are non-negotiable. Everything else is flexible.
-    public RateLimitMiddleware(RequestDelegate next, IRateLimiter rateLimiter, RateLimitConfig config)
+    //  That's it. Those two things are non-negotiable. Everything else is flexible.
+    public RateLimitMiddleware(RequestDelegate next, IRateLimiter rateLimiter, RateLimitConfig config, IStrategyKeyResolver resolver)
     {
         _next = next;
         _rateLimiter = rateLimiter;
         _config = config;
+        _resolver = resolver;
     }
     public async Task InvokeAsync(HttpContext context)
     {
-        var key = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+        var key = _resolver.Resolve(context);
         var result = await _rateLimiter.IsAllowedAsync(key, _config);
         if(result.Status == RateLimitStatus.Exceeded)
         {
